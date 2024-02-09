@@ -1,3 +1,9 @@
+White Paws Pet Shelter
+
+![image](https://github.com/HabibaMekay/WhitePaws/assets/133516736/76de4c32-2f47-42cc-8bca-47e12f2ad628)
+
+
+
 1- Problem Definition
 
 Maintaining an animal shelter is not an easy job, and it requires a lot of data storing daily. It is not common to see websites that are related to sheltering animals and encouraging their adoption, which could be part of the reason why one could often find injured and starved stray animals.
@@ -19,4 +25,7 @@ Animal handler:
 ●	Schedule feeding,training and vaccine times for animals.
 ●	Review adoption requests.
 
+3- Database Schema
+
+![image](https://github.com/HabibaMekay/WhitePaws/assets/133516736/dc0a0f24-ad26-461e-88da-a4cd86c07ddd)
 
