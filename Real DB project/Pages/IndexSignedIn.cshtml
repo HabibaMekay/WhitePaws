@@ -1,0 +1,182 @@
+﻿@page
+@model Real_DB_project.Pages.IndexSingedInModel
+@{
+	ViewData["Title"] = "Home page";
+
+	Layout = "_Layout";
+}
+	
+
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+	<div class="container">
+		@*  <a class="navbar-brand" href="index.html">WPPS :)<span></span></a> *@
+		<a class="navbar-brand" asp-area="" asp-page="/Index">WPPS :)<span></span></a> 
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsFurni">
+			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+
+
+
+				@* I Changed the routing conventions from the commented above *@
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-page="/IndexSignedIn">Home</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-page="/PetsSignedIn" asp-route-ClientUser="@Model.ClientUser">Pets</a> 
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-page="/Follow up" asp-route-ClientUser="@Model.ClientUser">Follow up with your pet</a>
+				</li>
+
+			</ul>
+
+			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+				<li><a class="nav-link" asp-area="" asp-page="/Index">Logout</a></li>        
+			@* 	<li><a class="nav-link" asp-area="" asp-page="/Requests"><img src="images/cart.svg"></a></li> *@
+			</ul>
+		</div>
+	</div>
+
+</nav>
+<!-- End Header/Navigation -->
+<!-- Start Hero Section -->
+<div class="hero">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-5">
+				<div class="intro-excerpt">
+					<h1>The White Paws <span clsas="d-block">Pet Shelter</span></h1>
+					<p class="mb-7">
+						~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+						Creating a home for cute fur companions.
+						Adopt your new pet today or help pets find their new homes!
+						~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-7">
+				<div class="hero-img-wrap" >
+					<img src="images/Doge-Head-Transparent.png" class="img-fluid" >
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Hero Section -->
+<!-- Start Product Section -->
+<div class="product-section">
+	<div class="container">
+		<div class="row">
+
+			<!-- Start Column 1 -->
+			<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+				<h2 class="mb-4 section-title">These pets need a new home</h2>
+				<p class="mb-4">choose the pet that you could give love to and grant them the home they deserve! </p>
+
+
+
+ 
+				@* <p><a href="~/shop.html" class="btn">Explore</a></p> *@
+				 
+				<p><a asp-area="" asp-page="/PetsSignedIn" class="btn">Explore</a></p> 
+ 
+
+				
+
+			</div>
+			<!-- End Column 1 -->
+			<!-- Start Column 2 -->
+			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				@* <a class="product-item" asp-area="" asp-page="/shop"> *@
+					<img src="images/dog.jpeg" class="img-fluid product-thumbnail">
+					<h3 class="product-title">Angel</h3>
+					<strong class="product-price">Dog</strong>
+
+					@* <span class="icon-cross">
+						<img src="images/cross.svg" class="img-fluid">
+					</span> *@
+				</a>
+			</div>
+
+			<!-- End Column 2 -->
+			<!-- Start Column 3 -->
+			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				@* <a class="product-item" asp-area="" asp-page="/shop"> *@
+					<img src="images/cat.jpeg" class="img-fluid product-thumbnail">
+					<h3 class="product-title">Casesar</h3>
+					<strong class="product-price">Cat</strong>
+
+					@* <span class="icon-cross">
+						<img src="images/arrow.png" class="img-fluid">
+					</span> *@
+				
+			</div>
+			<!-- End Column 3 -->
+			<!-- Start Column 4 -->
+			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				@* <a class="product-item" asp-area="" asp-page="/shop"> *@
+					<img src="images/Rabbit.jpeg" class="img-fluid product-thumbnail">
+					<h3 class="product-title">Fluffy</h3>
+					<strong class="product-price">Rabbit</strong>
+
+					@* <span class="icon-cross">
+						<img src="images/cross.svg" class="img-fluid">
+					</span> *@
+				</a>
+			</div>
+			<!-- End Column 4 -->
+
+		</div>
+	</div>
+</div>
+<!-- End Product Section -->
+
+<!-- Start Footer Section -->
+<footer class="footer-section">
+	<div class="container relative">
+
+@* 		<div class="sofa-img">
+			<img src="images/Doge-Head-Transparent.png" alt="Image" class="img-fluid">
+		</div> *@
+
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="subscription-form">
+					<form method="post" class="row g-3" asp-page-handler="donate">
+						<input type="hidden" asp-for="ClientUser" />
+						<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span> Help our community  </span></h3>
+						<div class="col-auto">
+							<input type="text" class="form-control" placeholder="Enter donation amount" asp-for=" amount">
+							<span asp-validation-for="amount"></span>
+						</div>
+						<br />
+						<div class="col-auto">
+							<input type="text" class="form-control" placeholder="Enter your credit card information" asp-for="creditcard">
+							<span asp-validation-for="creditcard"></span>
+						</div>
+						<br />
+						<div class="col-auto">
+							<input type="text" class="form-control" placeholder="Enter your CVV" asp-for="cvv">
+							<span asp-validation-for="cvv"></span>
+						</div>
+						<div class="col-auto">
+							<p><button class="btn btn-primary"> Donate now! </button></p>
+							
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+		
+</footer>
+<!-- End Footer Section -->

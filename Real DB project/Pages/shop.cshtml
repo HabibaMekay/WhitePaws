@@ -1,0 +1,126 @@
+﻿@page
+@model Real_DB_project.Pages.shopModel
+@{
+	Layout = "_Layout";
+}
+
+<head>
+	<style>
+		body {
+			background-color: #DADEDF; /* Light gray background color */
+		}
+		#pet-box {
+			/*background-color: #f5f5f5; /* Add gray background color */
+			padding: 15px; /* Optional: Add padding inside the box */
+			margin-bottom: 20px; /* Optional: Add margin between pet boxes */
+			transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		}
+
+			#pet-box:hover {
+				background-color: #DADEDD; /* Change background color on hover */
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+				transform: scale(1.02);
+			}
+		.product-item img {
+			width: 100%;
+			height: auto;
+		}
+
+		.product-title {
+			margin-top: 10px; /* Optional: Add margin to separate title from image */
+		}
+
+		.product-price {
+			display: block; /* Optional: Ensure price appears on a new line */
+			font-weight: bold;
+		}
+	</style>
+
+</head>
+
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+	<div class="container">
+		@*  <a class="navbar-brand" href="index.html">WPPS :)<span></span></a> *@
+		<a class="navbar-brand" asp-area="" asp-page="/Index">WPPS :)<span></span></a> @*edited*@
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsFurni">
+			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+
+				@* I Changed the routing conventions from the template *@
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-page="/shop">Pets</a>
+				</li>
+
+				@* <li class="nav-item">
+				<a class="nav-link" asp-area="" asp-page="/Follow up">Follow up with your pet</a>
+				</li> *@
+
+			</ul>
+
+			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+				<li><a class="nav-link" asp-area="" asp-page="/SignIn"><img src="images/user.svg"></a></li>         @*edited*@
+
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- End Header/Navigation -->
+<!-- Start Hero Section -->
+<div class="hero">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-3">
+				<div class="intro-excerpt">
+					<h1>Explore pets</h1>
+
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="hero-img-wrap">
+					<div>
+						<img src="images/pngegg (6).png" class="img-fluid">
+					</div>
+					<div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- End Hero Section -->
+@* <h1> number of pets is @Model.dt.Rows.Count .Count</h1> *@
+
+<div class="untree_co-section product-section before-footer-section" style="text-decoration: none">
+	<div class="container">
+		<div class="row">
+			@for (int i = 0; i < Model.PetCount; i++)
+			{
+				<div class="col-12 col-md-4 col-lg-3 mb-5" id="pet-box">
+					<a class="product-item" asp-area="" asp-page="/SignIn">
+						<img src="images/@Model.Pet[i].PetID .jpeg" class="img-fluid product-thumbnail" style="height: 200px;">
+						<h3 class="product-title"> @Model.Pet[i].PetName</h3>
+						<strong class="product-price"> @Model.Pet[i].PetType </strong>
+
+					</a>
+				</div>
+			}
+		</div>
+	</div>
+</div>
+
+
+
+
+
+

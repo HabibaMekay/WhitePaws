@@ -1,0 +1,168 @@
+﻿@page
+@model Real_DB_project.Pages.EmployeeModel
+@{
+}
+
+
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+    <div class="container">
+        @*  <a class="navbar-brand" href="index.html">WPPS :)<span></span></a> *@
+        <a class="navbar-brand" asp-area="" asp-page="/Index">WPPS :)<span></span></a> 
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+  
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-page="/Index">Log out</a>
+                </li>
+
+            </ul>
+
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                
+               
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<!-- End Header/Navigation -->
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-3">
+                <div class="intro-excerpt">
+                    <h1>Employee</h1>
+                </div>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Schedule</h2>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Pet ID</th>
+                        <th scope="col">Feeding Time</th>
+                        <th scope="col">Vaccine Time</th>
+                        <th scope="col">Medication Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < @Model.SchCount; i++)
+                    {
+                        <tr>
+                            <td>@Model.Schedules[i].Date</td>
+                            <td>@Model.Schedules[i].PetID</td>
+                            <td>@Model.Schedules[i].FeedingTime</td>
+                            <td>@Model.Schedules[i].VaccineTime</td>
+                            <td>@Model.Schedules[i].MedicationTime</td>
+                        </tr>
+                    }
+                    <form method="post" asp-page-handler="AddSchedule">
+                    <tr>
+
+                        <td>
+                            <label>Date:</label>
+                            <input type="text" class="form-control" asp-for="@Model.SDate" />
+                        </td>
+                        <td>
+                            <label>PetID:</label>
+                            <input type="text" class="form-control" asp-for="@Model.SPetID" />
+                        </td>
+                        <td>
+                            <label>Feeding Time:</label>
+                            <input type="text" class="form-control" asp-for="@Model.SFeedingTime" />
+                        </td>
+                        <td>
+                            <label>Vaccine Time:</label>
+                            <input type="text" class="form-control" asp-for="@Model.SVaccineTime" />
+                        </td>
+                        <td>
+                            <label>Medication Time:</label>
+                            <input type="text" class="form-control" asp-for="@Model.SMedicationTime" />
+                        </td>
+                    </tr>
+                    <tr style="border: none">
+                        <td colspan="5" style="border: none">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Add Schedule</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </form>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Adoption Requests</h2>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Request Date</th>
+                <th>Request Number</th>
+                <th>Client Username</th>
+                <th>Pet ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+            <form method="post">
+        <tbody>
+                @if (Model.Requests != null)
+                {
+                    @foreach (var request in Model.Requests)
+                    {
+                    <tr>
+                        <td>@request.RequestDate</td>
+                        <td>@request.RequestNum</td>
+                        <td>@request.ClientUsername</td>
+                        <td>@request.PetID</td>
+                        <td>
+                            <div class="form-group text-center">
+                                <input type="hidden" asp-for="EmpUsername" />
+                                <input type="hidden" asp-for="@request.RequestNum" />
+                                <button type="submit" asp-page-handler="Accept" asp-route-requestNum="@request.RequestNum" class="btn btn-primary">Accept</button>
+                                <button type="submit" asp-page-handler="Decline" asp-route-requestNum="@request.RequestNum" class="btn btn-danger">Decline</button>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+                else
+                {
+                <tr>
+                    <td colspan="5">No requests available.</td>
+                </tr>
+                }
+        </tbody>
+
+                
+
+            </form>
+
+    </table>
+</div>

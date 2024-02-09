@@ -1,0 +1,305 @@
+﻿@page
+@model Real_DB_project.Pages.AdminModel
+@{
+}
+
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+    <div class="container">
+        @*  <a class="navbar-brand" href="index.html">WPPS :)<span></span></a> *@
+        <a class="navbar-brand" asp-area="" asp-page="/Index">WPPS :)<span></span></a> @*edited*@
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-page="/Index">Log out</a>
+                </li>
+
+            </ul>
+
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<!-- End Header/Navigation -->
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-lg-3">
+                <div class="intro-excerpt">
+                    <h1>Admin Page</h1>
+                </div>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Employees</h2>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.EmployCount; i++)
+            {
+                <tr>
+                    <td>@Model.Employees[i].Name</td>
+                    <td>@Model.Employees[i].Username</td>
+                    <td>@Model.Employees[i].Password</td>
+                    <td>@Model.Employees[i].Email</td>
+                </tr>
+            }
+            <form method="post" asp-page-handler="AddEmployee">
+            <tr>
+
+                <td>
+                    <label>Name:</label>
+                    <input type="text" class="form-control" asp-for="@Model.EmpName" />
+                    <span asp-validation-for="@Model.EmpName" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Username:</label>
+                    <input type="text" class="form-control" asp-for="@Model.EmpUsername" />
+                    <span asp-validation-for="@Model.EmpUsername" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Password:</label>
+                    <input type="text" class="form-control" asp-for="@Model.EmpPassword" />
+                    <span asp-validation-for="@Model.EmpPassword" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Email:</label>
+                    <input type="text" class="form-control" asp-for="@Model.EmpEmail" />
+                    <span asp-validation-for="@Model.EmpEmail" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr style="border: none">
+                <td colspan="4" style="border: none">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Add Employee</button>
+                    </div>
+                </td>
+            </tr>
+            </form>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Pets</h2>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th> 
+                <th scope="col">Type</th>
+                <th scope="col">Species</th> 
+                <th scope="col">Picture</th>
+                <th scope="col">Status</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.PetCount; i++)
+            {
+                <tr>
+                    <td> @Model.Pets[i].PetID</td>
+                    <td> @Model.Pets[i].PetName</td>
+                    <td> @Model.Pets[i].PetAge</td>
+                    <td> @Model.Pets[i].PetType </td>
+                    <td> @Model.Pets[i].PetSpecies </td>
+                    <td> <img src="images/@Model.Pets[i].PetID .jpeg" class="img-fluid product-thumbnail"></td>
+                    <td> @Model.Pets[i].PetStatus </td>
+
+                </tr>
+            }
+            <form method="post" asp-page-handler="AddPet" enctype="multipart/form-data">
+            <tr>
+
+                <td>
+                    <label>Pet ID:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Petid" />
+                    <span asp-validation-for="@Model.Petid" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Name:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Petname" />
+                    <span asp-validation-for="@Model.Petname" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Age:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Petage" />
+                    <span asp-validation-for="@Model.Petage" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Type:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Petype" />
+                    <span asp-validation-for="@Model.Petype" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Species:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Petspecies" />
+                    <span asp-validation-for="@Model.Petspecies" class="text-danger"></span>
+                </td>
+                <td colspan="2">
+                    <div class="col-auto">
+                        <input type="file" class="form-control" name="fileToUpload" placeholder="Upload a picture of pet" asp-for="@Model.image">
+                    </div>
+                </td>
+
+            </tr>
+            <tr style="border: none">
+                <td colspan="7" style="border: none">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Add Pet</button>
+                    </div>
+                </td>
+            </tr>
+            </form>
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Clients</h2>
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Phone Numer</th>
+                <th>Creation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < @Model.ClientCount; i++)
+            {
+                <tr>
+                    <td>@Model.Clients[i].ClientName</td>
+                    <td>@Model.Clients[i].ClientUsername</td>
+                    <td>@Model.Clients[i].ClientPassword</td>
+                    <td>@Model.Clients[i].ClientPhone</td>
+                    <td>@Model.Clients[i].CreationDate</td>
+
+                </tr>
+            }
+            <form method="post" asp-page-handler="AddClient">
+            <tr>
+
+                <td>
+                    <label>Name:</label>
+                    <input type="text" class="form-control" asp-for="@Model.CliName" />
+                    <span asp-validation-for="@Model.CliName" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Username:</label>
+                    <input type="text" class="form-control" asp-for="@Model.CliUsername" />
+                    <span asp-validation-for="@Model.CliUsername" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Password:</label>
+                    <input type="text" class="form-control" asp-for="@Model.CliPass" />
+                    <span asp-validation-for="@Model.CliPass" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Phone Number:</label>
+                    <input type="text" class="form-control" asp-for="@Model.CliPhone" />
+                    <span asp-validation-for="@Model.CliPhone" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Creation Date:</label>
+                    <input type="text" class="form-control" asp-for="@Model.CliCreation" />
+                    <span asp-validation-for="@Model.CliCreation" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr style="border: none">
+                <td colspan="5" style="border: none">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Add Client</button>
+                    </div>
+                </td>
+            </tr>
+            </form>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Vets</h2>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>SSN</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < @Model.VetCount; i++)
+            {
+                <tr>
+                    <td>@Model.Vets[i].VetName</td>
+                    <td>@Model.Vets[i].VetSSN</td>
+                    <td>@Model.Vets[i].VetPhone</td>
+
+                </tr>
+            }
+            <form method="post" asp-page-handler="AddVet">
+            <tr>
+
+                <td>
+                    <label>Name:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Vname" />
+                    <span asp-validation-for="@Model.Vname" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>SSN:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Vssn" />
+                    <span asp-validation-for="@Model.Vssn" class="text-danger"></span>
+                </td>
+                <td>
+                    <label>Phone Number:</label>
+                    <input type="text" class="form-control" asp-for="@Model.Vphone" />
+                    <span asp-validation-for="@Model.Vphone" class="text-danger"></span>
+                </td>
+            </tr>
+            <tr style="border: none">
+                <td colspan="5" style="border: none">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Add vet</button>
+                    </div>
+                </td>
+            </tr>
+            </form>
+        </tbody>
+    </table>
+</div>
+
+

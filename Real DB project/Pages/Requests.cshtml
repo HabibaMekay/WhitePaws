@@ -1,0 +1,141 @@
+﻿@page
+@model Real_DB_project.Pages.RequestsModel
+@{
+}
+
+
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+    <div class="container">
+        @*  <a class="navbar-brand" href="index.html">WPPS :)<span></span></a> *@
+        <a class="navbar-brand" asp-area="" asp-page="/Index">WPPS :)<span></span></a> @*edited*@
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+
+
+                @*  <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li><a class="nav-link" href="shop.html">Shop</a></li>
+                <li><a class="nav-link" href="about.html">About us</a></li>
+                <li><a class="nav-link" href="services.html">Services</a></li>
+                <li><a class="nav-link" href="blog.html">Blog</a></li>
+                <li><a class="nav-link" href="contact.html">Contact us</a></li> *@
+
+
+
+                @* I Changed the routing conventions from the commented above *@
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-page="/IndexSignedIn">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-page="/PetsSignedIn">Pets</a> @*edit razor name later*@
+                </li>
+
+                @* <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-page="/Follow up">Follow up with your pet</a>
+                </li> *@
+
+
+            </ul>
+
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                <li><a class="nav-link" asp-area="" asp-page="/SignIn"><img src="images/user.svg"></a></li>         @*edited*@
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<!-- End Header/Navigation -->
+
+
+<body>
+
+
+
+    <!-- Start Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-3">
+                    <div class="intro-excerpt">
+                        <h1>Requests</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+
+    <div class="untree_co-section before-footer-section">
+        <div class="container">
+            <div class="row mb-5">
+                    <div class="site-blocks-table">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Pet ID</th>
+                                    <th>Name</th>
+                                    <th>Pet Type</th>
+                                    <th>Species</th>
+                                    <th>Age</th>
+                                    <th>Picture</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td>@Model.Pets[0].PetID</td>
+                                        <td>@Model.Pets[0].PetName</td>
+                                        <td>@Model.Pets[0].PetType</td>
+                                        <td>@Model.Pets[0].PetSpecies</td>
+                                        <td>@Model.Pets[0].PetAge</td>
+                                    <td> <img src="images/@Model.Pets[0].PetID .jpeg" class="img-fluid product-thumbnail"></td>
+
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+
+            <<div class="row col-12 col-auto">
+                <div class="row">
+                    <div class="text-primary text-xl-center">
+                        <p>
+                            <form method="post" asp-page-handler="SendRequest">
+                                <input type="hidden" asp-for="PetID" />
+                                <input type = "hidden" asp-for= "ClientUser" />
+
+                                <button type="submit" class="btn btn-danger">Send the Request</button>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row text-primary text-xl-center">
+                    <p>
+                        <form method="post" asp-page-handler="Continue">
+                            <input type="hidden" asp-for="PetID" />
+                            <button type="submit" class="btn">Continue Exploring</button>
+                        </form>
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>

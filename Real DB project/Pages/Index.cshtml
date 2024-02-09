@@ -1,0 +1,117 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+
+	Layout = "_Layout";
+}
+
+
+<head>
+	<style>
+		.product-section {
+			margin-top: 20px; /* Adjust the top margin as needed */
+		}
+	</style>
+</head>
+
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+	<div class="container">
+		@*  <a class="navbar-brand" href="index.html">WPPS :)<span></span></a> *@
+		<a class="navbar-brand" asp-area="" asp-page="/Index">WPPS :)<span></span></a> @*edited*@
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsFurni">
+			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-page="/Index">Home</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" asp-area="" asp-page="/shop">Pets</a> @*edit razor name later*@
+				</li>
+
+			</ul>
+
+			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+				<li><a class="nav-link" asp-area="" asp-page="/SignIn"><img src="images/user.svg"></a></li>         @*edited*@
+				@* <li><a class="nav-link" asp-area="" asp-page="/Requests"><img src="images/cart.svg"></a></li> *@
+			</ul>
+		</div>
+	</div>
+
+</nav>
+<!-- End Header/Navigation -->
+<!-- Start Hero Section -->
+<div class="hero">
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-lg-5">
+				<div class="intro-excerpt">
+					<h1>The White Paws <span clsas="d-block">Pet Shelter</span></h1>
+					<p class="mb-7">
+						~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+						Creating a home for cute fur companions.
+						Adopt your new pet today or help pets find their new homes!
+						~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-7" style="margin-top:0px;">
+				<div class="hero-img-wrap">
+					<img src="images/Dogpet.png" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Hero Section -->
+<!-- Start Product Section -->
+<div class="product-section" style="margin-top:40px">
+	<div class="container">
+		<div class="row">
+
+			<!-- Start Column 1 -->
+			<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+				<h2 class="mb-4 section-title">These pets need a new home</h2>
+				<p class="mb-4">Choose the pet that you could give love to and grant them the home they deserve! </p>
+				@* <p><a href="~/shop.html" class="btn">Explore</a></p> *@
+				<p><a asp-area="" asp-page="/shop" class="btn">Explore</a></p> @*fixed*@
+			</div>
+			<!-- End Column 1 -->
+			<!-- Start Column 2 -->
+			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				<a class="product-item" asp-area="" asp-page="/shop">
+					<img src="images/4 .jpeg" class="img-fluid product-thumbnail">
+					<h3 class="product-title">Angel</h3>
+					<strong class="product-price">Dog</strong>
+				</a>
+			</div>
+
+			<!-- End Column 2 -->
+			<!-- Start Column 3 -->
+			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				<a class="product-item" asp-area="" asp-page="/shop">
+					<img src="images/5 .jpeg" class="img-fluid product-thumbnail">
+					<h3 class="product-title">Casesar</h3>
+					<strong class="product-price">Cat</strong>
+
+				</a>
+			</div>
+			<!-- End Column 3 -->
+			<!-- Start Column 4 -->
+			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+				<a class="product-item" asp-area="" asp-page="/shop">
+					<img src="images/43 .jpeg" class="img-fluid product-thumbnail">
+					<h3 class="product-title">Fluffy</h3>
+					<strong class="product-price">Rabbit</strong>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

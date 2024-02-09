@@ -1,0 +1,108 @@
+﻿@page
+@model Real_DB_project.Pages.Follow_upModel
+@{
+}
+
+
+
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+    <div class="container">
+        @*  <a class="navbar-brand" href="index.html">WPPS :)<span></span></a> *@
+        <a class="navbar-brand" asp-area="" asp-page="/Index">WPPS :)<span></span></a> @*edited*@
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+
+
+                @*  <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li><a class="nav-link" href="shop.html">Shop</a></li>
+                <li><a class="nav-link" href="about.html">About us</a></li>
+                <li><a class="nav-link" href="services.html">Services</a></li>
+                <li><a class="nav-link" href="blog.html">Blog</a></li>
+                <li><a class="nav-link" href="contact.html">Contact us</a></li> *@
+
+
+
+                @* I Changed the routing conventions from the commented above *@
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-page="/IndexSignedIn">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-page="/PetsSignedIn">Pets</a> @*edit razor name later*@
+                </li>
+
+
+                @* <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-page="/Follow up">Follow up with your pet</a>
+
+                </li> *@
+
+            </ul>
+
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                <li><a class="nav-link" asp-area="" asp-page="/SignIn"><img src="images/user.svg"></a></li>         @*edited*@
+                <li><a class="nav-link" asp-area="" asp-page="/Requests"><img src="images/cart.svg"></a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<!-- End Header/Navigation -->
+
+<body>
+    <div class="container mt-5 mb-3">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="sofa-img text-center">
+                    <img src="images/pngegg (1).png" alt="Image" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="subscription-form">
+                    <h3 class="text-center mb-4">
+                        <span class="me-1">
+                            <img src="images/envelope-outline.svg" alt="Image" class="img-fluid">
+                        </span>
+                        <span>Give updates about your pet!</span>
+                    </h3>
+                    
+                    <form method="post" class="row g-3" asp-page-handler="Submit" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="ClientUser" />
+                        <div class="col-12">
+                            <label for="petId" class="form-label">Select Pet ID:</label>
+                            <select class="form-select" asp-for="PetID" id="petId" name="petId">
+                                @for (int i = 0; i < Model.PetCount; i++)
+                                {
+                                    <option value="@Model.PetsAdopted[i].PetID">@Model.PetsAdopted[i].PetID</option>
+                                }
+
+                            </select>
+                        </div>
+                        <div class="col-12">                            
+                            
+                            <label for="health" class="form-label">Health of your pet:</label>
+                            <input type="text" class="form-control" id="health" placeholder="How is the health of your pet" asp-for="@Model.health">
+                        </div>
+                        <div class="col-12">
+                            <label for="filename" class="form-label">Upload a picture of your pet:</label>
+                             <input type="file" class="form-control" name="fileToUpload" placeholder="Show us how your pet is doing!" asp-for="@Model.image">
+                        </div>
+                        <div class="col-12 text-center mt-4">
+                            <button class="btn btn-primary">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
