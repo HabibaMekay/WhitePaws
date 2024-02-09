@@ -7,10 +7,7 @@ For that reason, we find it necessary to create a database for this information.
 2- List of system users and privileges of each user
 
 Admin:
-●	Adds employees.
-●	Gives access to users.
-●	Performs backup.
-●	Adds pets to the database.
+●	Adds employees, pets, vets and clients to database.
 
 Client:
 ●	Browse Animals.
@@ -19,11 +16,7 @@ Client:
 ●	Give donations to the shelter.
 
 Animal handler:
-●	Schedule feeding times for animals.
-●	Schedule training for animals.
-●	Schedule vaccines.
-●	Schedule animal check-ups.
-●	Add animals and animal details.
+●	Schedule feeding,training and vaccine times for animals.
 ●	Review adoption requests.
 
-![image](https://github.com/HabibaMekay/WhitePaws/assets/133516736/59a08835-2b1b-4a6b-a9fd-b36d8826d69c)
+
